@@ -41,9 +41,8 @@ public class Player {
         return result;
     }
 
-    // Static Factory Method - devuelve una instancia del objeto Player.
+    // Static Factory Method
     public static Player getInstance(String name){
-        // Objects.requireNonNullElse(name, "ANONIMOUS") - crea el objeto con name o "ANONIMOUS" si name es null.
         return new Player(Objects.requireNonNullElse(name, "ANONIMOUS"));
     }
 }

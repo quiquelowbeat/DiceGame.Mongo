@@ -30,13 +30,9 @@ public class GameServiceImpl implements GameService {
         Player player = playerService.findPlayer(playerId);
         Game game = Game.getInstance();
         if(game.getResult().equals("WIN")) player.setTotalWins(player.getTotalWins() + 1);
-        /*
-        Método player.calculateWinningPercentage() creado en el domain Player para calcular el porcentaje
-        de partidas ganadas.
-        */
         if(player.getGames() != null) player.getGames().add(game);
         player.setWinningPercentage(player.calculateWinningPercentage());
-        playerRepository.save(player); // Update de los valores actualizados de partidas ganadas y porcetanje de éxito.
+        playerRepository.save(player);
         return mapper.toGameDto(game);
     }
 
@@ -44,9 +40,9 @@ public class GameServiceImpl implements GameService {
     public List<GameDto> getGamesByPlayerId(String playerId){
         Player player = playerService.findPlayer(playerId);
         List<GameDto> gameDtoList = player.getGames().stream()
-                .map(mapper::toGameDto) // game -> mapper.toGameDto(game)
+                .map(mapper::toGameDto)
                 .collect(Collectors.toList());
-        if(gameDtoList.isEmpty()) throw new NullPointerException("Game list is empty."); // Lanzamos excepción en caso de que la lista esté vacía.
+        if(gameDtoList.isEmpty()) throw new NullPointerException("Game list is empty.");
         return gameDtoList;
     }
 }
