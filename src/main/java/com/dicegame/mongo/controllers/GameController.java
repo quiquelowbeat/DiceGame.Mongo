@@ -2,6 +2,9 @@ package com.dicegame.mongo.controllers;
 
 import com.dicegame.mongo.model.dto.GameDto;
 import com.dicegame.mongo.model.services.GameService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,10 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
+    @Operation(summary = "New game by player id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "New game created successfully."),
+            @ApiResponse(responseCode = "404", description = "Player not found")})
     @PostMapping("/players/{id}/games")
     public ResponseEntity<GameDto> newGame(@PathVariable String id){
         try{
@@ -27,6 +34,10 @@ public class GameController {
         }
     }
 
+    @Operation(summary = "Get all games by player id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Shows dice roll record."),
+            @ApiResponse(responseCode = "204", description = "Empty record.")})
     @GetMapping("/players/{id}/games")
     public ResponseEntity<List<GameDto>> getGamesByPlayerId(@PathVariable String id){
         try{
