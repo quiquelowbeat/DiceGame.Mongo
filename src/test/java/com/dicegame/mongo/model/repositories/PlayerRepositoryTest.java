@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
-import static org.assertj.core.api.Assertions.assertThat;
 // Those tests will use an embedded in-memory MongoDB process by default if it is available.
 @DataMongoTest(excludeAutoConfiguration = EmbeddedMongoAutoConfiguration.class)
 class PlayerRepositoryTest {
