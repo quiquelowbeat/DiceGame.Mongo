@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -30,7 +31,6 @@ class GameControllerTest {
     @MockBean
     private GameServiceImpl gameService;
 
-    private String token;
     private GameDto gameDto;
     private static final Logger logger = Logger.getLogger(GameControllerTest.class.getName());
 
@@ -74,7 +74,7 @@ class GameControllerTest {
         gameDto2.setDice1(1);
         gameDto2.setDice2(5);
         gameDto2.setResult("LOSE");
-        List<GameDto> gameDtoList = List.of(gameDto, gameDto2);
+        List<GameDto> gameDtoList = Arrays.asList(gameDto, gameDto2);
 
         when(gameService.getGamesByPlayerId("1L")).thenReturn(gameDtoList);
 

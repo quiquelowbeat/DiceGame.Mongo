@@ -109,7 +109,7 @@ class PlayerServiceImplTest {
     @Test
     void getAllPlayers() {
         // given
-        given(playerRepository.findAll()).willReturn(List.of(player, player2));
+        given(playerRepository.findAll()).willReturn(Arrays.asList(player, player2));
         // when
         List<PlayerDto> playerList = playerService.getAllPlayers();
         // then
@@ -120,7 +120,7 @@ class PlayerServiceImplTest {
     @Test
     void getRankingOfAllPlayers() {
         // given
-        given(playerRepository.findAll()).willReturn(List.of(player, player2));
+        given(playerRepository.findAll()).willReturn(Arrays.asList(player, player2));
         // when
         Map<String, Double> playerMap = playerService.getRankingOfAllPlayers();
         // then
@@ -131,7 +131,7 @@ class PlayerServiceImplTest {
     @Test
     void getLoser() {
         // given
-        List<Player> playerList = List.of(player, player2);
+        List<Player> playerList = Arrays.asList(player, player2);
         given(playerRepository.findAll()).willReturn(playerList);
         given(mapper.toPlayerDto(player)).willReturn(playerDto);
         // when
@@ -144,7 +144,7 @@ class PlayerServiceImplTest {
     @Test
     void getWinner() {
         // given
-        List<Player> playerList = List.of(player, player2);
+        List<Player> playerList = Arrays.asList(player, player2);
         given(playerRepository.findAll()).willReturn(playerList);
         given(mapper.toPlayerDto(player2)).willReturn(playerDto2);
         // when

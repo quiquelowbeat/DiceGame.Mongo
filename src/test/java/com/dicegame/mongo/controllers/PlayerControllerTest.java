@@ -12,6 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Logger;
@@ -100,7 +101,7 @@ class PlayerControllerTest {
     @DisplayName("JUnit test for getAllPlayers method")
     @Test
     void getAllPlayers() throws Exception {
-        List<PlayerDto> playerDtoList = List.of(playerDto, playerDto2);
+        List<PlayerDto> playerDtoList = Arrays.asList(playerDto, playerDto2);
         given(playerService.getAllPlayers()).willReturn(playerDtoList);
         String response = mockMvc.perform(get("/players"))
                 .andExpect(status().isOk())
