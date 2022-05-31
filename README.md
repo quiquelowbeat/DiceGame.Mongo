@@ -41,7 +41,7 @@ If you want to test the API use this Heroku server: https://dice-game-apirest.he
 ## What I've learned?
 
 ️☑️API REST: best practices.<br />
-️☑️Architecture: ️separation of concerns using layers. <br />
+️☑️Separation of concerns using layers. <br />
 ️☑️JUnit testing and Mockito. <br />
 ☑️Set up a DB in the cloud (MondoDB Atlas)<br />
 ☑️Testing of endpoints with Postman.<br />
