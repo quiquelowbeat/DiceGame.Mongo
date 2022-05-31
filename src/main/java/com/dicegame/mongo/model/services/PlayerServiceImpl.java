@@ -88,7 +88,7 @@ public class PlayerServiceImpl implements PlayerService{
     public Player findPlayer(String playerId){
         Optional<Player> playerOptional = playerRepository.findByPlayerId(playerId);
         Player player = null;
-        if(playerOptional.isEmpty()){
+        if(!playerOptional.isPresent()){
             System.err.println("Player not found.");
             return null;
         }
