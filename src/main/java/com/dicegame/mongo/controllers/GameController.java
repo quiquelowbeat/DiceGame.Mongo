@@ -21,7 +21,7 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @Operation(summary = "New game by player id")
+    @Operation(summary = "Creates new game by player id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "New game created successfully."),
             @ApiResponse(responseCode = "404", description = "Player not found")})
@@ -34,7 +34,7 @@ public class GameController {
         }
     }
 
-    @Operation(summary = "Get all games by player id")
+    @Operation(summary = "Reads all games by player id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shows dice roll record."),
             @ApiResponse(responseCode = "204", description = "Empty record.")})

@@ -20,7 +20,7 @@ public class PlayerController {
     @Autowired
     private PlayerService playerService;
 
-    @Operation(summary = "New player.")
+    @Operation(summary = "Create new player.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "New player created."),
             @ApiResponse(responseCode = "500", description = "Error during process.")})
@@ -60,7 +60,7 @@ public class PlayerController {
         }
     }
 
-    @Operation(summary = "Shows all players.")
+    @Operation(summary = "Reads all players.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Players not found."),
             @ApiResponse(responseCode = "200", description = "Shows players list.")})
@@ -74,7 +74,7 @@ public class PlayerController {
         }
     }
 
-    @Operation(summary = "Shows ranking.")
+    @Operation(summary = "Reads ranking.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ranking shown correctly."),
             @ApiResponse(responseCode = "204", description = "Ranking is empty.")})
@@ -87,7 +87,7 @@ public class PlayerController {
         }
     }
 
-    @Operation(summary = "Shows loser.")
+    @Operation(summary = "Reads loser.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shows loser successfully."),
             @ApiResponse(responseCode = "204", description = "Ranking is empty.")})
@@ -100,7 +100,7 @@ public class PlayerController {
         }
     }
 
-    @Operation(summary = "Shows winner.")
+    @Operation(summary = "Reads winner.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shows winner successfully."),
             @ApiResponse(responseCode = "204", description = "Ranking is empty.")})
