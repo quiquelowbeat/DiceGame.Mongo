@@ -1,6 +1,4 @@
 <div id="top"></div>
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://spring.io/projects/spring-boot">
