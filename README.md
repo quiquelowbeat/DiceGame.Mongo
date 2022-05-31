@@ -34,7 +34,22 @@ API REST best practices applied.
 
 ## Endpoints
 
+Check and test all endpoints here: https://dice-game-apirest.herokuapp.com/swagger-ui.html
+
 ## Test the API
+
+If you want to test the API use this Heroku server: https://dice-game-apirest.herokuapp.com/ followed by the endpoint.
+
+## What I've learned?
+
+️☑️API REST: best practices.<br />
+️☑️Architecture: ️separation of concerns using layers. <br />
+️☑️JUnit testing and Mockito. <br />
+☑️Set up a DB in the cloud (MondoDB Atlas)<br />
+☑️Testing of endpoints with Postman.<br />
+☑️Usage of collections and environments on Postman (love this) <br />
+☑️Swagger UI and OpenAPI for docs.<br />
+☑️Deployment on a Heroku server for testing purposes.<br />
 
 ## Future Updates
 
