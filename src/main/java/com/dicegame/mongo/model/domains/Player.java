@@ -43,6 +43,6 @@ public class Player {
 
     // Static Factory Method
     public static Player getInstance(String name){
-        return new Player(Objects.requireNonNullElse(name, "ANONIMOUS"));
+        return new Player(name);
     }
 }

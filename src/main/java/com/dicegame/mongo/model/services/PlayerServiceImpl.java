@@ -23,7 +23,8 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     public PlayerDto createPlayer(String name) {
-        Player player = Player.getInstance(name);
+        String playerName = (name == null) ? "ANONYMOUS" : name;
+        Player player = Player.getInstance(playerName);
         return mapper.toPlayerDto(playerRepository.save(player));
     }
 
