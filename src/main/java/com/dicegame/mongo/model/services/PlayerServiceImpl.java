@@ -15,10 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PlayerServiceImpl implements PlayerService{
 
-    @Autowired
     private final PlayerRepository playerRepository;
-
-    @Autowired
     private final Mapper mapper;
 
     @Override

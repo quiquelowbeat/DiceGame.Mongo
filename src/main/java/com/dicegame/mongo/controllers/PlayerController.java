@@ -5,6 +5,7 @@ import com.dicegame.mongo.model.services.PlayerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class PlayerController {
 
-    @Autowired
-    private PlayerService playerService;
+    private final PlayerService playerService;
 
     @Operation(summary = "Create new player.")
     @ApiResponses(value = {

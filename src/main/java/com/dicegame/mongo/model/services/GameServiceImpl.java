@@ -16,10 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GameServiceImpl implements GameService {
 
-    @Autowired
     private final PlayerRepository playerRepository;
-
-    @Autowired
     private final PlayerServiceImpl playerService;
 
     @Autowired
