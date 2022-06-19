@@ -15,7 +15,7 @@ class PlayerRepositoryTest {
     private MongoTemplate mongoTemplate;
 
     @Test
-    public void notEmpty(){
+    void notEmpty(){
         Assertions.assertThat(mongoTemplate.findAll(Player.class)).isNotEmpty();
     }
 }

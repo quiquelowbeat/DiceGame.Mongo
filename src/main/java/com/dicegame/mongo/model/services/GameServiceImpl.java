@@ -1,6 +1,6 @@
 package com.dicegame.mongo.model.services;
 
-import com.dicegame.mongo.components.Mapper;
+import com.dicegame.mongo.components.DtoMapper;
 import com.dicegame.mongo.model.domains.Game;
 import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.GameDto;
@@ -20,7 +20,7 @@ public class GameServiceImpl implements GameService {
     private final PlayerServiceImpl playerService;
 
     @Autowired
-    private final Mapper mapper;
+    private final DtoMapper dtoMapper;
 
     @Override
     public GameDto newGame(String playerId) {
@@ -30,14 +30,14 @@ public class GameServiceImpl implements GameService {
         if(player.getGames() != null) player.getGames().add(game);
         player.setWinningPercentage(player.calculateWinningPercentage());
         playerRepository.save(player);
-        return mapper.toGameDto(game);
+        return dtoMapper.toGameDto(game);
     }
 
     @Override
     public List<GameDto> getGamesByPlayerId(String playerId){
         Player player = playerService.findPlayer(playerId);
         List<GameDto> gameDtoList = player.getGames().stream()
-                .map(mapper::toGameDto)
+                .map(dtoMapper::toGameDto)
                 .collect(Collectors.toList());
         if(gameDtoList.isEmpty()) throw new NullPointerException("Game list is empty.");
         return gameDtoList;

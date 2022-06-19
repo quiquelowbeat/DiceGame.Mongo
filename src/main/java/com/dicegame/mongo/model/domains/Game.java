@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Random;
+
 @Getter
 @Setter
 @ToString
@@ -22,17 +24,12 @@ public class Game {
     }
 
     public int getRandomNumberFromOneToSeven(){
-        return (int) (Math.random() * 7) + 1;
+        Random r = new Random();
+        return r.nextInt(7) + 1;
     }
 
     public String rollTheDice(){
-        String result;
-        if((this.dice1 + this.dice2) == 7){
-            result = "WIN";
-        } else {
-            result = "LOSE";
-        }
-        return result;
+        return (this.dice1 + this.dice2) == 7 ? "WIN" : "LOSE";
     }
 
     // Static Factory Method

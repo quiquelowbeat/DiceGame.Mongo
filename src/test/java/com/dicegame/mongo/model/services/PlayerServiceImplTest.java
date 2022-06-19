@@ -1,6 +1,6 @@
 package com.dicegame.mongo.model.services;
 
-import com.dicegame.mongo.components.Mapper;
+import com.dicegame.mongo.components.DtoMapper;
 import com.dicegame.mongo.model.domains.Game;
 import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.PlayerDto;
@@ -27,7 +27,7 @@ class PlayerServiceImplTest {
     private PlayerRepository playerRepository;
 
     @Mock
-    private Mapper mapper;
+    private DtoMapper dtoMapper;
 
     @InjectMocks
     private PlayerServiceImpl playerService;
@@ -73,7 +73,7 @@ class PlayerServiceImplTest {
     @Test
     void createPlayer() {
         // given
-        given(mapper.toPlayerDto(playerRepository.save(player))).willReturn(playerDto);
+        given(dtoMapper.toPlayerDto(playerRepository.save(player))).willReturn(playerDto);
         // when
         PlayerDto createdPlayer = playerService.createPlayer(player.getName());
         // then
@@ -86,7 +86,7 @@ class PlayerServiceImplTest {
         // given
         given(playerRepository.findByPlayerId("1L")).willReturn(Optional.of(player));
         playerDto.setName("NotFoo");
-        given(mapper.toPlayerDto(playerRepository.save(player))).willReturn(playerDto);
+        given(dtoMapper.toPlayerDto(playerRepository.save(player))).willReturn(playerDto);
         // when
         PlayerDto updatedPlayer = playerService.updatePlayerName(playerDto);
 
@@ -102,7 +102,7 @@ class PlayerServiceImplTest {
         // when
         playerService.deleteAllGamesByPlayerId("1L");
         // then
-        assertThat(player.getGames().size()).isEqualTo(0);
+        assertThat(player.getGames().size()).isZero();
     }
 
     @DisplayName("JUnit test for getAllPlayers method")
@@ -133,7 +133,7 @@ class PlayerServiceImplTest {
         // given
         List<Player> playerList = Arrays.asList(player, player2);
         given(playerRepository.findAll()).willReturn(playerList);
-        given(mapper.toPlayerDto(player)).willReturn(playerDto);
+        given(dtoMapper.toPlayerDto(player)).willReturn(playerDto);
         // when
         PlayerDto playerLoser = playerService.getLoser();
         // then
@@ -146,7 +146,7 @@ class PlayerServiceImplTest {
         // given
         List<Player> playerList = Arrays.asList(player, player2);
         given(playerRepository.findAll()).willReturn(playerList);
-        given(mapper.toPlayerDto(player2)).willReturn(playerDto2);
+        given(dtoMapper.toPlayerDto(player2)).willReturn(playerDto2);
         // when
         PlayerDto playerWinnerr = playerService.getWinner();
         // then

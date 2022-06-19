@@ -8,7 +8,7 @@ import com.dicegame.mongo.model.dto.PlayerDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Mapper {
+public class DtoMapper {
 
     public PlayerDto toPlayerDto(Player player){
         PlayerDto playerDto = new PlayerDto();

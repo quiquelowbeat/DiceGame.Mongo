@@ -1,11 +1,11 @@
 package com.dicegame.mongo.model.services;
 
-import com.dicegame.mongo.components.Mapper;
+import com.dicegame.mongo.components.DtoMapper;
 import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.PlayerDto;
 import com.dicegame.mongo.model.repositories.PlayerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,24 +13,25 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PlayerServiceImpl implements PlayerService{
 
     private final PlayerRepository playerRepository;
-    private final Mapper mapper;
+    private final DtoMapper dtoMapper;
 
     @Override
     public PlayerDto createPlayer(String name) {
         String playerName = (name == null) ? "ANONYMOUS" : name;
         Player player = Player.getInstance(playerName);
-        return mapper.toPlayerDto(playerRepository.save(player));
+        return dtoMapper.toPlayerDto(playerRepository.save(player));
     }
 
     @Override
     public PlayerDto updatePlayerName(PlayerDto playerDto) {
-        Player playerUpdated = null;
+        Player playerUpdated;
         playerUpdated = findPlayer(playerDto.getPlayerId());
         playerUpdated.setName(playerDto.getName());
-        return mapper.toPlayerDto(playerRepository.save(playerUpdated));
+        return dtoMapper.toPlayerDto(playerRepository.save(playerUpdated));
     }
 
     @Override
@@ -45,7 +46,7 @@ public class PlayerServiceImpl implements PlayerService{
     @Override
     public List<PlayerDto> getAllPlayers() {
         return playerRepository.findAll().stream()
-                .map(mapper::toPlayerDto)
+                .map(dtoMapper::toPlayerDto)
                 .collect(Collectors.toList());
     }
 
@@ -68,7 +69,7 @@ public class PlayerServiceImpl implements PlayerService{
         if(playerOptional.isPresent()){
             player = playerOptional.get();
         }
-        return mapper.toPlayerDto(player);
+        return dtoMapper.toPlayerDto(player);
     }
 
     @Override
@@ -79,15 +80,15 @@ public class PlayerServiceImpl implements PlayerService{
          if(playerOptional.isPresent()){
             player = playerOptional.get();
          }
-         return mapper.toPlayerDto(player);
+         return dtoMapper.toPlayerDto(player);
     }
 
     @Override
     public Player findPlayer(String playerId){
         Optional<Player> playerOptional = playerRepository.findByPlayerId(playerId);
-        Player player = null;
+        Player player;
         if(!playerOptional.isPresent()){
-            System.err.println("Player not found.");
+            log.error("Player not found.");
             return null;
         }
         player = playerOptional.get();
