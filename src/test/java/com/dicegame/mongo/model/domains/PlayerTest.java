@@ -12,7 +12,7 @@ class PlayerTest {
         // when
         Player player = Player.getInstance("FooFighter");
         // then
-        assertEquals(player.getName(), "FooFighter");
+        assertEquals("FooFighter", player.getName());
         assertNotNull(player);
     }
 
@@ -21,7 +21,7 @@ class PlayerTest {
         // when
         Player player = Player.getInstance(null);
         // then
-        assertEquals(player.getName(), "ANONIMOUS");
+        assertEquals("ANONIMOUS", player.getName());
         assertNotNull(player);
     }
 }
