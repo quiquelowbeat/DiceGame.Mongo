@@ -1,6 +1,6 @@
 package com.dicegame.mongo.model.services;
 
-import com.dicegame.mongo.components.DtoMapper;
+import com.dicegame.mongo.components.PlayerDtoMapper;
 import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.PlayerDto;
 import com.dicegame.mongo.model.repositories.PlayerRepository;
@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
 public class PlayerServiceImpl implements PlayerService{
 
     private final PlayerRepository playerRepository;
-    private final DtoMapper dtoMapper;
+    private final PlayerDtoMapper playerDtoMapper;
 
     @Override
     public PlayerDto createPlayer(String name) {
         String playerName = (name == null) ? "ANONYMOUS" : name;
         Player player = Player.getInstance(playerName);
-        return dtoMapper.toPlayerDto(playerRepository.save(player));
+        return playerDtoMapper.toPlayerDto(playerRepository.save(player));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PlayerServiceImpl implements PlayerService{
         Player playerUpdated;
         playerUpdated = findPlayer(playerDto.getPlayerId());
         playerUpdated.setName(playerDto.getName());
-        return dtoMapper.toPlayerDto(playerRepository.save(playerUpdated));
+        return playerDtoMapper.toPlayerDto(playerRepository.save(playerUpdated));
     }
 
     @Override
@@ -46,7 +46,7 @@ public class PlayerServiceImpl implements PlayerService{
     @Override
     public List<PlayerDto> getAllPlayers() {
         return playerRepository.findAll().stream()
-                .map(dtoMapper::toPlayerDto)
+                .map(playerDtoMapper::toPlayerDto)
                 .collect(Collectors.toList());
     }
 
@@ -69,7 +69,7 @@ public class PlayerServiceImpl implements PlayerService{
         if(playerOptional.isPresent()){
             player = playerOptional.get();
         }
-        return dtoMapper.toPlayerDto(player);
+        return playerDtoMapper.toPlayerDto(player);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class PlayerServiceImpl implements PlayerService{
          if(playerOptional.isPresent()){
             player = playerOptional.get();
          }
-         return dtoMapper.toPlayerDto(player);
+         return playerDtoMapper.toPlayerDto(player);
     }
 
     @Override
