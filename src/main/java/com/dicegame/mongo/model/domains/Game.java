@@ -16,6 +16,7 @@ public class Game {
     private int dice1;
     private int dice2;
     private String result;
+    private Random r = new Random();
 
     public Game(){
         this.dice1 = getRandomNumberFromOneToSeven();
@@ -24,7 +25,6 @@ public class Game {
     }
 
     public int getRandomNumberFromOneToSeven(){
-        Random r = new Random();
         return r.nextInt(7) + 1;
     }
 
