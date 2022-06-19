@@ -21,7 +21,7 @@ class PlayerTest {
         // when
         Player player = Player.getInstance(null);
         // then
-        assertEquals("ANONIMOUS", player.getName());
+        assertEquals("ANONYMOUS", player.getName());
         assertNotNull(player);
     }
 }
