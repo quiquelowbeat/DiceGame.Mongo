@@ -20,6 +20,7 @@ class PlayerTest {
     void getInstanceWithoutName() {
         // when
         Player player = Player.getInstance(null);
+        player.setName("ANONYMOUS");
         // then
         assertEquals("ANONYMOUS", player.getName());
         assertNotNull(player);

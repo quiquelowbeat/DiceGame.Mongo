@@ -1,6 +1,6 @@
 package com.dicegame.mongo.model.services;
 
-import com.dicegame.mongo.components.PlayerDtoMapper;
+import com.dicegame.mongo.components.GameDtoMapper;
 import com.dicegame.mongo.model.domains.Game;
 import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.GameDto;
@@ -26,7 +26,7 @@ class GameServiceImplTest {
     private PlayerRepository playerRepository;
 
     @Mock
-    private PlayerDtoMapper playerDtoMapper;
+    private GameDtoMapper gameDtoMapper;
 
     @Mock
     private PlayerServiceImpl playerService;
