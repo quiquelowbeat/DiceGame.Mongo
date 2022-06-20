@@ -2,6 +2,7 @@ package com.dicegame.mongo.model.services;
 
 import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.PlayerDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;

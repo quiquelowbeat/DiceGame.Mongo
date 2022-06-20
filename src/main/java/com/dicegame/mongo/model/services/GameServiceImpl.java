@@ -6,6 +6,8 @@ import com.dicegame.mongo.model.domains.Player;
 import com.dicegame.mongo.model.dto.GameDto;
 import com.dicegame.mongo.model.repositories.PlayerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.stream.Collectors;
 public class GameServiceImpl implements GameService {
 
     private final PlayerRepository playerRepository;
-    private final PlayerServiceImpl playerService;
+    private final PlayerService playerService;
     private final GameDtoMapper gameDtoMapper;
 
     @Override

@@ -1,22 +1,17 @@
 package com.dicegame.mongo.model.domains;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Random;
-
 @Getter
 @Setter
 @ToString
-
 public class Game {
 
     private int dice1;
     private int dice2;
     private String result;
-    private Random r = new Random();
 
     public Game(){
         this.dice1 = getRandomNumberFromOneToSeven();
@@ -25,7 +20,7 @@ public class Game {
     }
 
     public int getRandomNumberFromOneToSeven(){
-        return r.nextInt(7) + 1;
+        return (int) (Math.random() * 7) + 1;
     }
 
     public String rollTheDice(){

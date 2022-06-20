@@ -2,6 +2,7 @@ package com.dicegame.mongo.controllers;
 
 import com.dicegame.mongo.model.dto.PlayerDto;
 import com.dicegame.mongo.model.services.PlayerService;
+import com.dicegame.mongo.model.services.PlayerServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
